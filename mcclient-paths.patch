@@ -1,0 +1,14 @@
+--- mcclient.c	Thu Jun  1 11:07:44 2000
++++ mcclient.cc	Mon Oct 27 17:11:22 2003
+@@ -543,9 +543,9 @@
+     char remote_h[100];
+     short local_p, remote_p;
+ 
+-    f = fopen("mcclient.cfg", "r");
++    f = fopen("/etc/mcclient.cfg", "r");
+     if (!f) {
+-        fprintf(stderr, "Can't read mcclient.cfg.\n");
++        fprintf(stderr, "/etc/Can't read mcclient.cfg.\n");
+         cleanup();
+         exit(1);
+     }
