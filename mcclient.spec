@@ -46,8 +46,7 @@ cat mcclient.cfg.orig >> mcclient.cfg
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig}
+install -d $RPM_BUILD_ROOT{%{_bindir},/etc/{rc.d/init.d,sysconfig}}
 
 install linux/mcclient $RPM_BUILD_ROOT%{_bindir}
 install mcclient.cfg $RPM_BUILD_ROOT%{_sysconfdir}
@@ -74,12 +73,11 @@ if [ "$1" = "0" ]; then
 	fi
         /sbin/chkconfig --del mcclient
 fi
-					
 
 %files
 %defattr(644,root,root,755)
 %doc README.protocol README.source
 %attr(755,root,root) %{_bindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/mcclient
-%config(noreplace) /etc/sysconfig/mcclient
-%config(noreplace) %{_sysconfdir}/mcclient.cfg
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/mcclient
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mcclient.cfg
