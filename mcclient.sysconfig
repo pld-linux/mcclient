@@ -1,0 +1,7 @@
+# Customized setings for mcclient
+
+# Define nice level for mcclient
+#SERVICE_RUN_NICE_LEVEL="0"
+
+# one can place "-t" or "-f" here
+#MCCLIENT_OPTIONS=""

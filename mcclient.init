@@ -1,0 +1,73 @@
+#!/bin/sh
+#
+# mcclient	this program starts and stops the mcclient daemon.
+#
+# chkconfig:	345 82 18
+#
+# description:	mcclient performs decompression of the mud client 
+#		compression protocol
+#
+# probe:	false
+# config:	/etc/mcclient.cfg
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Get service config
+[ -f /etc/sysconfig/mcclient ] && . /etc/sysconfig/mcclient
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status ]; then
+		msg_network_down mcclient
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+# Sanity check
+[ -f /usr/bin/mcclient ] || exit 0
+[ -f /etc/mcclient.cfg ] || exit 0
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/mcclient ]; then
+		msg_starting mcclient
+		daemon --user nobody "/usr/bin/mcclient >/dev/null 2>&1 &"
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/mcclient
+	else
+		msg_already_running "mcclient"
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/mcclient ]; then
+		msg_stopping "mcclient"
+		killproc mcclient
+		rm -f /var/lock/subsys/mcclient >/dev/null 2>&1
+	else
+		msg_not_running "mcclient"
+	fi
+	;;
+  status)
+	status mcclient
+	exit $?
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
