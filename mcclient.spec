@@ -1,5 +1,5 @@
 Summary:	mcclient - MCCP mud proxy
-Summary(pl):	mcclient - proxy do mudow z MCCP
+Summary(pl):	mcclient - proxy do mudów z MCCP
 Name:		mcclient
 Version:	0.4
 Release:	1
@@ -19,11 +19,11 @@ less data is sent, so packet loss is less likely, and large output can
 actually get there faster.
 
 %description -l pl
-Mcclient przeprowadza dekompresje wykorzystujac protokol MCCP. Protokol 
-ten umozliwia kompresje wszystkich danych wysylanych przez mud do klienta. 
-Zmniejsza to obciazenie lacza - mniej danych jest wysylanych, co przy
-duzej ilosci klientow moze znaczaco wplynac na komfort gry.
-
+Mcclient przeprowadza dekompresjê wykorzystuj±c protokó³ MCCP.
+Protokó³ ten umo¿liwia kompresjê wszystkich danych wysy³anych przez
+muda do klienta. Zmniejsza to obci±¿enie ³±cza - mniej danych jest
+wysy³anych, co przy du¿ej liczbie klientów mo¿e znacz±co wp³yn±æ na
+komfort gry.
 
 %prep
 %setup -q
@@ -40,7 +40,8 @@ cat mcclient.cfg.orig >> mcclient.cfg
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d linux $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT%{_bindir}
+
 install linux/mcclient $RPM_BUILD_ROOT%{_bindir}
 
 %clean
@@ -49,4 +50,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.protocol README.source mcclient.cfg
-%attr(755,root,root) "%{_bindir}/*"
+%attr(755,root,root) %{_bindir}/*
