@@ -13,7 +13,7 @@ Patch0:		%{name}-paths.patch
 BuildRequires:	zlib-devel
 PreReq:         rc-scripts
 Requires(post,preun):   /sbin/chkconfig
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Mcclient performs decompression of the mud client compression
