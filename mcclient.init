@@ -4,7 +4,7 @@
 #
 # chkconfig:	345 82 18
 #
-# description:	mcclient performs decompression of the mud client 
+# description:	mcclient performs decompression of the mud client
 #		compression protocol
 #
 # probe:	false
