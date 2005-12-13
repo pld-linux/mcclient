@@ -7,12 +7,12 @@ License:	GPL v2
 Group:		Applications/Games
 Source0:	http://www.randomly.org/projects/MCCP/%{name}-%{version}.tar.gz
 # Source0-md5:	0f56cc75edcf6602a11b878edd3190f0
-Source1:        %{name}.init
-Source2:        %{name}.sysconfig
+Source1:	%{name}.init
+Source2:	%{name}.sysconfig
 Patch0:		%{name}-paths.patch
 BuildRequires:	zlib-devel
-PreReq:         rc-scripts
 Requires(post,preun):   /sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,7 +58,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/mcclient
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/chkconfig --add mcclient 
+/sbin/chkconfig --add mcclient
 if [ -f /var/lock/subsys/mcclient ]; then
         /etc/rc.d/init.d/mcclient restart 1>&2
 	else
@@ -79,5 +79,5 @@ fi
 %doc README.protocol README.source
 %attr(755,root,root) %{_bindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/mcclient
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/mcclient
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mcclient.cfg
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/mcclient
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mcclient.cfg
