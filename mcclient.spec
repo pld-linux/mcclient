@@ -1,5 +1,5 @@
 Summary:	mcclient - MCCP mud proxy
-Summary(pl):	mcclient - proxy do mudów z MCCP
+Summary(pl.UTF-8):   mcclient - proxy do mudÃ³w z MCCP
 Name:		mcclient
 Version:	0.4
 Release:	2
@@ -23,11 +23,11 @@ costs money). It also tends to speed up your mud connection somewhat -
 less data is sent, so packet loss is less likely, and large output can
 actually get there faster.
 
-%description -l pl
-Mcclient przeprowadza dekompresjê wykorzystuj±c protokó³ MCCP.
-Protokó³ ten umo¿liwia kompresjê wszystkich danych wysy³anych przez
-muda do klienta. Zmniejsza to obci±¿enie ³±cza - mniej danych jest
-wysy³anych, co przy du¿ej liczbie klientów mo¿e znacz±co wp³yn±æ na
+%description -l pl.UTF-8
+Mcclient przeprowadza dekompresjÄ™ wykorzystujÄ…c protokÃ³Å‚ MCCP.
+ProtokÃ³Å‚ ten umoÅ¼liwia kompresjÄ™ wszystkich danych wysyÅ‚anych przez
+muda do klienta. Zmniejsza to obciÄ…Å¼enie Å‚Ä…cza - mniej danych jest
+wysyÅ‚anych, co przy duÅ¼ej liczbie klientÃ³w moÅ¼e znaczÄ…co wpÅ‚ynÄ…Ä‡ na
 komfort gry.
 
 %prep
