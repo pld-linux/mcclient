@@ -1,5 +1,5 @@
 Summary:	mcclient - MCCP mud proxy
-Summary(pl.UTF-8):   mcclient - proxy do mudów z MCCP
+Summary(pl.UTF-8):	mcclient - proxy do mudów z MCCP
 Name:		mcclient
 Version:	0.4
 Release:	2
