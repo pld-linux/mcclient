@@ -32,7 +32,7 @@ komfort gry.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch -P0 -p0
 
 mv -f mcclient.cfg mcclient.cfg.orig
 cat >> mcclient.cfg << EOF
